@@ -39,19 +39,19 @@
 	* Plotting data on google map based on lattitude and longitude.
 	* Infection and recovery rates are controlling paramters.
 
-<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/pie.png" height = "300px" width = "500px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/pie.png" height = "100px" width = "200px" >
 </center>
 
-<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/visu1.png" height = "300px" width = "500px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/visu1.png" height = "200px" width = "400px" >
 </center>
 
-<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/vis2.png" height = "300px" width = "500px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/vis2.png" height = "100px" width = "300px" >
 </center>
 
 <center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/piecomplete.png" height = "300px" width = "500px" >
 </center>
 
-<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/complete.png" height = "300px" width = "500px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/complete.png" height = "200px" width = "400px" >
 </center>
 
 
