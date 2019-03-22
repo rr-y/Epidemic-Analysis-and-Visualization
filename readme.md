@@ -16,6 +16,6 @@
 
 * Index Page
 
-<img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/index.png" height = "400px" width = "400px" >
+<img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/index.png" height = "300px" width = "600px" >
 
 	
