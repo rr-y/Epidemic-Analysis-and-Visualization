@@ -4,6 +4,7 @@
 	Python 3.x
 	Django Version == 1.9
 	Google Map Api Key
+		* Generate your api key 
 	
 ## How to run?
 	Go to the project folder and type --
@@ -15,6 +16,6 @@
 
 * Index Page
 
-
+<img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/index.png" height = "400px" width = "400px" >
 
 	
