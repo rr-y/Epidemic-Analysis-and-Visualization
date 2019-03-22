@@ -1,0 +1,40 @@
+<!--  Parameter Page  -->
+
+{% extends "map/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="row">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-8">
+	 	<div class="jumbotron" id="jumb">
+
+
+			<center style="margin-bottom: 8%;">
+				<h3 style="color: #FF0000">Enter Here!</h3>
+				<h5>Fill out the parameters here</h5>
+			</center>
+
+			<form enctype="multipart/form-data" method="post">
+
+                <!-- Getting interface of form from views.py and forms.py -->
+ 				
+				{% csrf_token %}
+				{{ para_form.as_p }}
+
+
+			<button type="submit" class="btn btn-success btn-lg" id="alerting">Submit</button>
+				
+			</form>
+				
+
+	</div>
+		
+
+	</div>
+	<div class="col-lg-2"></div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+/* ======================== External CSS File ================== */
+/* ========================Styling of map and piechart HTML id element ================== */
+
+    #map , #piechart {
+        height: 600px;
+        width: 600px;
+        float: right; 
+              }
+
+
+/* ========================Styling of body and html HTML element ================== */
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+/* ========================Styling heading HTML id element ================== */
+
+    #heading
+      {
+        margin-bottom: 80px;
+      }
+
+
+/* ========================Styling of pie  HTML id element ================== */
+
+    #pie
+      {
+        margin-left: 10%;
+      }
+
+/* ========================Styling of background HTML id element ================== */
+
+    #background
+     {
+       background-image: url("dark-vintage.jpg");
+     }
+
+
+    body
+    {
+      background-image: url("background.jpg");
+    }
+
+
+    #jumb
+    {
+      margin-top: 20%;
+      text-align: center;
+    }
+
+
+
+
+

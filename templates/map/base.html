@@ -1,0 +1,85 @@
+<!-- Loading Static Files  -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	    
+	    <!-- Latest compiled and minified CSS -->
+	    
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+       
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+       <!-- Latest compiled JavaScript -->
+       
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+       <!-- Google Chart API -->
+
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+       <!-- Google Map API Key  -->
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxf3Ej_V1-WWod0-RN4XciwULYtL6yXh0&libraries=visualization">
+      </script>
+
+	   <title>Base</title>
+
+</head>
+<body>
+
+	<!-- ================ Navigation Bar ============== -->
+
+	<nav class="navbar navbar-default navbar-static-top" id="nav_image">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<a href="{% url 'map:index' %}"  class="navbar-brand">EPDA</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="navbar-link"><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
+
+				<li class="navbar-link"><a href="{% url 'map:register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+
+				<li class="navbar-link"><a href="{% url 'map:para_view' %}"><span class="glyphicon glyphicon-plus-sign"></span> Add Simulation Parameters</a></li>
+
+				<li class="navbar-link"><a href="{% url 'map:eav' %}"><span class="glyphicon glyphicon-camera"></span> Simulation Result</a></li>
+
+				{% if user.is_authenticated %}
+
+				<li class="navbar-link"><a href="{% url 'user_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+				{% else %}
+
+				<li class="navbar-link"><a href="{% url 'map:user_login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+				{% endif %}
+
+			</ul>
+		</div>
+		
+	</nav>
+
+	<!-- End of navigation Bar  -->
+
+	<div class="container">
+		{% block body_block %}
+
+			<!-- All code goes here which extends base.html -->
+
+	    {% endblock %}
+		
+	</div>
+
+
+
+</body>
+</html>

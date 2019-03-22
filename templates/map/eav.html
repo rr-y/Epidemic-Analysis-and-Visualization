@@ -1,0 +1,327 @@
+<!-- Loading Static Files -->
+
+{% load staticfiles %}
+
+<!DOCTYPE html >
+
+  <html>
+    <head>
+      
+       <meta charset="utf-8">
+
+        <title>Heatmaps</title>
+
+        <script type="text/javascript" src='{% static "data.json" %}'></script>
+        
+        <!-- Latest compiled and minified CSS -->
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+        <!-- Google Chart API  -->
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+       
+
+    <!-- =======================Google Map Javascript API ======================== -->
+    <!-- ====================== Google Map API Key ============================ -->
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxf3Ej_V1-WWod0-RN4XciwULYtL6yXh0&libraries=visualization">
+      </script>
+
+    <!-- Loading style.css -->
+      
+      <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+
+
+  </head>
+
+  <body>
+
+
+    <!-- ===================== Color Changing Heading  =====================-->
+
+  <div class="jumbotron jumbotron-fluid" id="background">
+
+    <div class="row" >
+        <center><h2 id="heading">Epidemic Analysis and Visualization </h2></center>
+
+    </div>
+
+    <div class="row">
+      <center><p id="result">Select The Option Below</p></center>
+    
+    </div>
+
+    <div class="row">
+    
+      <div class="col-xs-6">
+        <center><button class="btn btn-success btn-lg" id="pie">Pie Chart</button></center>
+
+      </div>
+    
+    <div class="col-xs-6">
+      <center><button class="btn btn-primary btn-lg" id="start">Show Map</button></center>
+
+    </div>
+  
+  </div>
+
+</div>
+        
+  <div class="row">
+
+ <!-- ========================== PIE CHart ============================== -->
+        <div class="col-xs-5">
+           <div id="piechart"></div>
+        </div>
+  
+  <!-- ================= Map Division=================-->
+
+        <div class="col-xs-7">
+          
+          <div id="map"></div>
+  
+        </div>
+
+ </div>
+
+ <script type="text/javascript">
+   
+   // =====================================Styling and firing differt event on html element =================================
+
+  header = document.querySelector("#heading");
+  start = document.querySelector("#start");
+  pie = document.querySelector("#pie");
+  result = document.querySelector("#result");
+
+
+//=================================== Variables ==========================================
+
+var map, mvc , mvcR , mvcS;            // map variable
+var delay = 10;                 // milliseconds
+var i =0;
+var data;
+var count1 = 0 ,count2 = 0;     // variable for movement of piechart
+var heatmap,heatmap1 ,heatmap2;           // Heatmap variables.  
+var length = {{SIR|length}}     // Total entry of the database SIR
+var arr1 = new Array();         // Array for storing entries from SIR database
+var arr2 = new Array();
+
+// Fetching entries from SIR database and storing in arr1 Array
+
+{% for sir in SIR %}
+  
+    arr1.push([{{sir.lng}} , {{sir.lat}}, {{sir.counter}}])
+    arr2.push([{{sir.lng}} , {{sir.lat}}])
+
+{% endfor %}
+
+
+
+//   ============================= Color Changing Function =====================
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+function setColor()
+{
+  header.style.color = getRandomColor();
+  result.style.color = getRandomColor();
+  
+
+}
+
+
+setInterval(setColor,500);
+
+
+// ===============================Map Event Listerner=============================================
+
+start.addEventListener('click',initMap);
+
+
+// ====================== Map Fuction ============================================================
+
+function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: arr1[100][0], lng: arr1[100][1]},
+          mapTypeId: 'satellite'
+        });
+
+
+    // MCV array to store lattitude and longitude information , used for 
+    // dynamic plotting on heatmap
+
+    mvc = new google.maps.MVCArray();
+    mvcR = new google.maps.MVCArray();
+    mvcS = new google.maps.MVCArray();
+
+
+    for(let i = 0 ;i < arr2.length ; i++)
+    {
+      var cur = new google.maps.LatLng(arr2[i][0],arr2[i][1]);
+      mvcS.push(cur);
+
+    }
+
+            heatmap2 = new google.maps.visualization.HeatmapLayer({
+                    data: mvcS,
+                     map: map,
+                     radius : 10,
+                     gradient :  [
+                                    'rgba(0, 0, 0, 0)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)',
+                                    'rgba(0, 0, 0, 1)'
+                                  ]
+
+
+                    });
+
+
+
+    // ================== Infection heatmap Initialization =============================
+        heatmap = new google.maps.visualization.HeatmapLayer({
+                    data: mvc,
+                     map: map,
+                     radius : 10
+
+
+                    });
+
+        // ================== Recovery heatmap Initialization =============================
+        
+        heatmap1 = new google.maps.visualization.HeatmapLayer({
+                     data: mvcR,
+                     map: map,
+                     radius : 10,
+                     // Color Property
+                     gradient : [
+                                    'rgba(0, 0, 0, 0)',
+                                    'rgba(0, 255, 255, 1)',
+                                    'rgba(0, 191, 255, 1)',
+                                    'rgba(0, 127, 255, 1)',
+                                    'rgba(0, 63, 255, 1)',
+                                    'rgba(0, 0, 255, 1)',
+                                    'rgba(0, 0, 223, 1)',
+                                    'rgba(0, 0, 191, 1)',
+                                    'rgba(0, 0, 159, 1)',
+                                    'rgba(0, 0, 127, 1)',
+                                    'rgba(63, 0, 91, 1)',
+                                    'rgba(127, 0, 63, 1)',
+                                    'rgba(191, 0, 31, 1)',
+                                    'rgba(0, 0, 0, 1)'
+                                  ]
+                    });
+
+
+
+
+        move();     
+
+       }
+
+
+   function move()
+        {
+
+                  for(var k = i;k< i+5 && k < length;k++)
+                  {
+                        var cur = new google.maps.LatLng(arr1[k][0],arr1[k][1]);
+
+                        if (arr1[k][2] == 0)
+                        {
+                           mvc.push(cur);
+                           count1++;
+
+                        } 
+
+                        else
+                        {
+                          
+                          mvcR.push(cur);
+                          count2++;
+                        }   
+                                           
+                   }
+
+              i = k;
+                         
+                         // i = k;
+                         if (i < length)
+                         {                                                            
+                            setTimeout(move,10); 
+                         }
+       }
+
+ // =================================================== Map Function End ==================================
+
+  // ============================================== Pie Chart Function ================================
+
+
+  pie.addEventListener('click',function()
+    {
+        google.charts.setOnLoadCallback(drawChart); 
+    });
+ 
+      google.charts.load('current', {'packages':['corechart']});
+
+       function drawChart() {
+
+
+
+      var data = google.visualization.arrayToDataTable([
+          ['No of people %', 'Hours per Day'],        
+          ['Saved %', count2],
+          ['Infected %',     count1],
+
+          ['Susceptible %',{{SIR|length }}/2]
+          
+        ]);
+
+        var options = {
+          title: 'Infection Activity'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+
+        chart.draw(data, options);
+        data.setValue(0, 1,count1);
+        data.setValue(1, 1,count2);
+        setInterval(drawChart,5000)
+      }
+
+
+
+ </script>
+ 
+  </body>
+</html>
