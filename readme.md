@@ -16,6 +16,31 @@
 
 * Index Page
 
-<img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/index.png" height = "300px" width = "600px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/index.png" height = "300px" width = "500px" >
+</center>
+
+* Register Page - Add your details
+
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/register.png" height = "300px" width = "500px" >
+</center>
+
+* Login Page - Authenticate yourself
+
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/login.png" height = "300px" width = "500px" >
+</center>
+
+* Add Simulation Parameter - Contains a json file containing lattitude and longitude of a particular location
+
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/parameter.png" height = "300px" width = "500px" >
+</center>
+
+# Simulation Result
+	* Pie chart of spreading of epidemic.
+	* Plotting data on google map based on lattitude and longitude.
+	* Infection and recovery rates are controlling paramters.
+
+
+
+
 
 	
