@@ -48,7 +48,7 @@
 <center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/vis2.png" height = "200px" width = "400px" >
 </center>
 
-<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/piecomplete.png" height = "200px" width = "400px" >
+<center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/piecomplete.png" height = "400px" width = "400px" >
 </center>
 
 <center><img src = "https://github.com/rr-y/Epidemic-Analysis-and-Visualization/blob/master/screenshots/complete.png" height = "200px" width = "400px" >
