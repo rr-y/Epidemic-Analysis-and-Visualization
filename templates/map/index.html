@@ -1,0 +1,26 @@
+<!-- Index Page  -->
+
+
+{% extends "map/base.html" %}
+<!-- Loading Static Files  -->
+{% load staticfiles %}
+
+{% block body_block %}
+
+<center>
+
+	<div class="jumbotron" id="jumb">
+		{% if user.is_authenticated %}
+		<center><h3>Welcome!</h3></center>
+
+		{% else %}
+
+		<center><h3>Please  Login For The HeatMap Visualization</h3></center>
+
+		{% endif %}
+
+	</div>
+
+</center>
+
+{% endblock %}
